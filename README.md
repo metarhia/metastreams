@@ -1,2 +1,1 @@
-# stream
-Readable and Writable Streams with buffering
+# Readable and Writable Streams with buffering
