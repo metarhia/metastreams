@@ -1,9 +1,8 @@
 'use strict';
 
-const submodules = {};
+const submodules = [
+  'fs-writable',
+  'writable'
+].map(path => require('./lib/' + path));
 
-['writable'].map(name => {
-  submodules[name] = require('./lib/' + name);
-});
-
-module.exports = submodules;
+module.exports = Object.assign({}, ...submodules);
