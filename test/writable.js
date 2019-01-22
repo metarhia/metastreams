@@ -5,10 +5,10 @@ const { Writable } = require('..');
 
 const {
   StreamDestroyedError,
-  StreamWriteAfterEndError
+  StreamWriteAfterEndError,
 } = require('./../lib/errors');
 
-const createStream = (highWaterMark) => {
+const createStream = highWaterMark => {
   const writeBuffer = [];
   const stream = new Writable({
     highWaterMark,
@@ -16,7 +16,7 @@ const createStream = (highWaterMark) => {
       if (typeof chunk === 'string') chunk = Buffer.from(chunk);
       writeBuffer.push(chunk);
       cb();
-    }
+    },
   });
   return [stream, writeBuffer];
 };
