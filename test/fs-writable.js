@@ -3,10 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const {
-  InvalidArgTypeError,
-  OutOfRangeError
-} = require('./../lib/errors');
+const { InvalidArgTypeError, OutOfRangeError } = require('./../lib/errors');
 
 const metatests = require('metatests');
 const { WritableFileStream } = require('..');
