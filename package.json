@@ -1,6 +1,6 @@
 {
   "name": "metastreams",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Timur Shemsedinov <timur.shemsedinov@gmail.com>",
   "description": "Readable and Writable Streams with buffering",
   "license": "MIT",
@@ -18,6 +18,9 @@
   },
   "main": "metastreams.js",
   "readmeFilename": "README.md",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "test": "npm run lint && metatests ./test",
     "lint": "eslint . && prettier -c \"**/*.js\" \"**/*.json\" \"**/*.md\" \".*rc\" \"**/*.yml\"",
