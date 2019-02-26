@@ -45,6 +45,19 @@ metatests.test('fs-writable / open', test => {
   test.on('done', () => fs.unlinkSync(TEST_FILENAME));
 });
 
+metatests.test('fs-writable / open with error', test => {
+  const INVALID_TEST_FILENAME = __dirname;
+
+  const stream = new WritableFileStream(INVALID_TEST_FILENAME);
+  stream.on(
+    'error',
+    test.mustCall(error => {
+      test.strictSame(error.errno, -21);
+      test.end();
+    })
+  );
+});
+
 metatests.test('fs-writable / write', test => {
   const TEST_FILENAME = path.join(__dirname, './write');
 
