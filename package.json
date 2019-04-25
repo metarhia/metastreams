@@ -30,12 +30,12 @@
     "node": ">=8.6.0"
   },
   "devDependencies": {
-    "eslint": "^5.12.1",
-    "eslint-config-metarhia": "^6.1.0",
-    "eslint-config-prettier": "^3.6.0",
-    "eslint-plugin-import": "^2.15.0",
+    "eslint": "^5.16.0",
+    "eslint-config-metarhia": "^7.0.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-prettier": "^3.0.1",
     "metatests": "^0.6.5",
-    "prettier": "1.16.x"
+    "prettier": "1.17.x"
   }
 }
