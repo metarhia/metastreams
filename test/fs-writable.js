@@ -77,3 +77,24 @@ metatests.test('fs-writable / write', test => {
     test.strictSame(writeData, '123456789');
   });
 });
+
+metatests.test('fs-writable / write with error', test => {
+  const filepath = path.join(__dirname, './write-with-error');
+  const stream = new WritableFileStream(filepath);
+  stream.once('open', () => {
+    const fd = stream.fd;
+    // replace with invalid file descriptor to trigger fs.write error
+    stream.fd = 123;
+    stream.write(
+      'data chunk',
+      test.mustCall(() => {
+        // restore original file descriptor to avoid unnecessary errors
+        stream.fd = fd;
+      })
+    );
+    stream.end(() => test.end());
+  });
+  test.on('done', () => {
+    fs.unlinkSync(filepath);
+  });
+});
