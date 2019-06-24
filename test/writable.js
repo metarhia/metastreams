@@ -103,3 +103,9 @@ metatests.testSync('Writable / destroy', test => {
   stream.destroy();
   stream.write('789');
 });
+
+metatests.test('Writable/ end-finish', test => {
+  const [stream] = createStream();
+
+  stream.end(() => test.end());
+});
