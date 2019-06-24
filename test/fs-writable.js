@@ -52,7 +52,7 @@ metatests.test('fs-writable / open with error', test => {
   stream.on(
     'error',
     test.mustCall(error => {
-      test.strictSame(error.errno, -21);
+      test.strictSame(error.code, 'EISDIR');
       test.end();
     })
   );
