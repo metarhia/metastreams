@@ -8,10 +8,10 @@ const { InvalidArgTypeError, OutOfRangeError } = require('./../lib/errors');
 const metatests = require('metatests');
 const { WritableFileStream } = require('..');
 
-metatests.testSync('fs-writable / create', test => {
+metatests.test('fs-writable / create', test => {
   const TEST_FILENAME = path.join(__dirname, 'create-test');
 
-  new WritableFileStream(TEST_FILENAME);
+  const stream = new WritableFileStream(TEST_FILENAME);
 
   test.throws(
     () => new WritableFileStream(),
@@ -31,7 +31,10 @@ metatests.testSync('fs-writable / create', test => {
     new OutOfRangeError('start', '>= 0', '{start: -1}')
   );
 
-  fs.unlinkSync(TEST_FILENAME);
+  stream.on('open', () => {
+    fs.unlinkSync(TEST_FILENAME);
+    test.end();
+  });
 });
 
 metatests.test('fs-writable / open', test => {
